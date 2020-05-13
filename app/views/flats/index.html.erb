@@ -1,0 +1,17 @@
+<h1>All our Flats (<%= @flats.size %>)</h1>
+
+<div class="card bg-light" style="width: 18rem;">
+  <% @flats.each do |f| %>
+    <img class="card-img-top" src="https://images.unsplash.com/photo-1580587771525-78b9dba3b914?ixlib=rb-1.2.1&auto=format&fit=crop&w=1567&q=80" alt="Card image cap">
+    <div class="card-body">
+      <h5 class="card-title"><%= f.name %></h5>
+      <p class="card-text"><%= f.description %></p>
+      <span><i class="fas fa-users"></i><%= f.price_per_night %></span>
+      <span><i class="fas fa-euro-sign"></i><%= f.number_of_guests %></span>
+      <br>
+      <%= link_to "More info", flat_path(f) %>
+      <%= link_to "Edit", edit_flat_path(f) %>
+      <%= link_to "Remove", flat_path(f), method: :delete, data: { confirm: "Delete #{f.name}?" } %>
+    </div>
+  <% end %>
+</div>
